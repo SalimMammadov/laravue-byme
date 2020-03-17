@@ -10,3 +10,6 @@
 ## About App
 
 LaraVue project by Salim Mammadov. Users CRUD system with Laravel Vue.js 
+
+
+Install project after this  write on command line " npm install " , "npm install vue-router' , "npm install vuex" , "npm install axios"
