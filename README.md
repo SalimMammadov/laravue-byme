@@ -13,3 +13,8 @@ LaraVue project by Salim Mammadov. Users CRUD system with Laravel Vue.js
 
 
 Install project after this  write on command line " npm install " , "npm install vue-router' , "npm install vuex" , "npm install axios"
+
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
+
+import { required ,minLength, email } from 'vuelidate/lib/validators'
