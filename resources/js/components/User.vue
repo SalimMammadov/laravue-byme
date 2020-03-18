@@ -20,7 +20,10 @@
     methods : {
 
       deleteuser(id){
+         var x =confirm("Silinsin mi ?")
+         if(x)
         this.$store.dispatch('deleteUser',id)
+
       }
 
     }

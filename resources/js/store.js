@@ -3,12 +3,12 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 Vue.use(Vuex);
-
 const store = new Vuex.Store({
 
   state : {
 
     users : [],
+    errors : [],
   },
   mutations : {
       initUser(state, users){
@@ -16,7 +16,7 @@ const store = new Vuex.Store({
       },
 
       addUser(state,users){
-            state.users.push(users)
+            state.users.push(users);
       },
       deleteUser(state,userid){
 
@@ -48,8 +48,14 @@ const store = new Vuex.Store({
     ///////
 
     addUser({commit},users){
+      this.state.errors = []
       axios.post("user",users)
-      .then(response => {commit('addUser',response.data)});
+      .then((response) => {commit('addUser',response.data)}).catch(error =>{
+        if(error.response.status == 422)
+         {
+         this.state.errors.push(error.response.data.errors)
+        }
+       })
 
     },
     deleteUser({commit},id){
@@ -70,6 +76,9 @@ const store = new Vuex.Store({
   getters : {
     users(state){
       return state.users
+    },
+    errors(state){
+      return state.errors
     }
   },
 
