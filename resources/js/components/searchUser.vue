@@ -48,7 +48,7 @@ import { required ,minLength, email } from 'vuelidate/lib/validators'
 
         methods : {
 
-          initUsers(){
+          initUsers(){ss
             this.username = '';
             this.searched = false;
             this.$store.dispatch('initUser')
