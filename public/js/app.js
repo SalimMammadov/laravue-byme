@@ -2165,8 +2165,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2187,6 +2185,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.dispatch('initUser');
     },
     searchUser: function searchUser() {
+      this.searched = false;
       this.$v.username.$touch();
 
       if (!this.$v.username.$invalid) {
@@ -38762,54 +38761,34 @@ var render = function() {
         }
       },
       [
-        _c("div", { staticClass: "input-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model.trim",
-                value: _vm.$v.username.$model,
-                expression: "$v.username.$model",
-                modifiers: { trim: true }
-              }
-            ],
-            staticClass: "form-control ",
-            attrs: { placeholder: "Enter any username", type: "text" },
-            domProps: { value: _vm.$v.username.$model },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.$v.username, "$model", $event.target.value.trim())
-              },
-              blur: function($event) {
-                return _vm.$forceUpdate()
-              }
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model.trim",
+              value: _vm.$v.username.$model,
+              expression: "$v.username.$model",
+              modifiers: { trim: true }
             }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "ml-2 btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Search")]
-          ),
-          _vm._v(" "),
-          _vm.searched
-            ? _c(
-                "button",
-                {
-                  staticClass: "ml-2 btn btn-danger",
-                  on: {
-                    click: function($event) {
-                      return _vm.initUsers()
-                    }
-                  }
-                },
-                [_vm._v("Back")]
-              )
-            : _vm._e()
-        ]),
+          ],
+          staticClass: "form-control ",
+          attrs: { placeholder: "Enter any username", type: "text" },
+          domProps: { value: _vm.$v.username.$model },
+          on: {
+            keyup: function($event) {
+              return _vm.searchUser()
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.$v.username, "$model", $event.target.value.trim())
+            },
+            blur: function($event) {
+              return _vm.$forceUpdate()
+            }
+          }
+        }),
         _vm._v(" "),
         _vm.$v.username.$anyError
           ? _c("div", [
@@ -38826,7 +38805,11 @@ var render = function() {
     _vm.searched && _vm.$store.getters.users.length > 0
       ? _c("div", { staticClass: "mt-3 alert alert-info" }, [
           _c("strong", [
-            _vm._v(' Success ! Key " ' + _vm._s(_vm.username) + ' " ')
+            _vm._v(
+              ' Success ! User find from key of " ' +
+                _vm._s(_vm.username) +
+                ' " '
+            )
           ])
         ])
       : _vm._e()
