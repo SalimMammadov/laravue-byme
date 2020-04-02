@@ -3,7 +3,7 @@
       <div class="col-md-8 ">
       <form @submit.prevent="searchUser()">
 
-          <input @keyup="searchUser()"  placeholder="Enter any username"  type="text" class="form-control " v-model.trim="$v.username.$model" >
+          <input @keyup="searchUser()" :class="{borderred : $v.username.$error}"  placeholder="Enter any username"  type="text" class="form-control " v-model.trim="$v.username.$model" >
           <!-- <button type="submit" class="ml-2 btn btn-primary">Search</button> -->
           <!-- <button @click="initUsers()" v-if="searched"  class="ml-2 btn btn-danger">Back</button> -->
 
@@ -24,6 +24,9 @@
 <style media="screen">
   .error{
     color:red
+  }
+  .borderred{
+    border:1px solid red;
   }
 </style>
 

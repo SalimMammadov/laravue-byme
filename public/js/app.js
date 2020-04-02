@@ -2165,6 +2165,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -6837,7 +6840,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.error{\n  color:red\n}\n", ""]);
+exports.push([module.i, "\n.error{\n  color:red\n}\n.borderred{\n  border:1px solid red;\n}\n", ""]);
 
 // exports
 
@@ -38772,6 +38775,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control ",
+          class: { borderred: _vm.$v.username.$error },
           attrs: { placeholder: "Enter any username", type: "text" },
           domProps: { value: _vm.$v.username.$model },
           on: {
